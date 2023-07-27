@@ -137,48 +137,13 @@ public class Calculator extends JFrame implements ActionListener {
         f.setSize(200, 230);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
-//        if (SystemTray.isSupported()== true){
-//            f.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-//        }
-//        SystemTray systemTray = SystemTray.getSystemTray();
-//        TrayIcon trayIcon = new TrayIcon(Toolkit.getDefaultToolkit().getImage("src/main/resources/calculator.png"));
-//        PopupMenu popupMenu = new PopupMenu();
-//        MenuItem show = new MenuItem();
-//        show.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                f.setVisible(true);
-//            }
-//        });
-//        MenuItem exit = new MenuItem("Exit");
-//        exit.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                System.exit(0);
-//            }
-//        });
-//        popupMenu.add(show);
-//        popupMenu.add(exit);
-//        trayIcon.setPopupMenu(popupMenu);
-//        try {
-//            systemTray.add(trayIcon);
-//        }
-//        catch (AWTException exception){
-//            exception.printStackTrace();
-//        }
         if (SystemTray.isSupported()== true){
             f.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         }
-//        SystemTray systemTray = SystemTray.getSystemTray();
-//        Image trayIcon = new TrayIcon(Toolkit.getDefaultToolkit().getImage("src/main/resources/calculator.png"));
-//        PopupMenu popupMenu = new PopupMenu();
-//        MenuItem show = new MenuItem();
-
         SystemTray systemTray = SystemTray.getSystemTray();
-        Image iconImage = Toolkit.getDefaultToolkit().getImage("src/main/resources/calculator.png");
+        TrayIcon trayIcon = new TrayIcon(Toolkit.getDefaultToolkit().getImage("src/main/resources/calculator_icon.png"));
         PopupMenu popupMenu = new PopupMenu();
-        MenuItem show = new MenuItem();
-
+        MenuItem show = new MenuItem("Show");
         show.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -194,16 +159,14 @@ public class Calculator extends JFrame implements ActionListener {
         });
         popupMenu.add(show);
         popupMenu.add(exit);
-//        trayIcon.setPopupMenu(popupMenu);
-        TrayIcon trayIcon = new TrayIcon(iconImage, "System Tray App", popupMenu);
+        trayIcon.setPopupMenu(popupMenu);
+
         try {
             systemTray.add(trayIcon);
         }
         catch (AWTException exception){
             exception.printStackTrace();
         }
-
-
     }
     public void actionPerformed(ActionEvent e)
     {
