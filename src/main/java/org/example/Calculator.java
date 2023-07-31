@@ -39,6 +39,7 @@ public class Calculator extends JFrame implements ActionListener {
         f.setResizable(false);
         f.setUndecorated(true);
         f.setVisible(true);
+        f.setAlwaysOnTop(true);
         f.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
 
@@ -52,7 +53,7 @@ public class Calculator extends JFrame implements ActionListener {
 
         // create a object of class
         Calculator c = new Calculator();
-
+        c.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         // create a textfield
         l = new JTextField(16);
 
