@@ -1,12 +1,7 @@
 package org.example;
 
 
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.UIManager;
-import javax.swing.JPanel;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import java.awt.Color;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
@@ -44,8 +39,8 @@ public class Calculator extends JFrame implements ActionListener {
         f.setResizable(false);
         f.setUndecorated(true);
         f.setVisible(true);
-        // f.setType(Window.Type.UTILITY);
-        f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        f.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
 
         try {
             // set look and feel
@@ -143,6 +138,7 @@ public class Calculator extends JFrame implements ActionListener {
         f.setSize(200, 230);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
+        f.addWindowListener(c.getWindowAdapter());
         if (SystemTray.isSupported()== true){
             f.setDefaultCloseOperation(f.DO_NOTHING_ON_CLOSE);
         }
@@ -166,7 +162,6 @@ public class Calculator extends JFrame implements ActionListener {
         popupMenu.add(show);
         popupMenu.add(exit);
         trayIcon.setPopupMenu(popupMenu);
-        f.addWindowListener(c.getWindowAdapter());
 
         try {
             systemTray.add(trayIcon);
