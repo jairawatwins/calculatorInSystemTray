@@ -1,7 +1,12 @@
 package org.example;
 
-
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import java.awt.Color;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
@@ -31,16 +36,16 @@ public class Calculator extends JFrame implements ActionListener {
         s0 = s1 = s2 = "";
     }
 
-    public static void main(String[] args) {
-//                createAndShowGUI();
+    private static void createAndShowCustomFrame() {
         // create a frame
         f = new JFrame("calculator");
         f.setUndecorated(true);
-        f.setResizable(false);
-        f.setUndecorated(true);
-        f.setVisible(true);
         f.setAlwaysOnTop(true);
+
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
         f.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
 
 
         try {
@@ -139,7 +144,9 @@ public class Calculator extends JFrame implements ActionListener {
         f.setSize(200, 230);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
+//        f.setComponentZOrder(c, 10);
         f.addWindowListener(c.getWindowAdapter());
+
         if (SystemTray.isSupported()== true){
             f.setDefaultCloseOperation(f.DO_NOTHING_ON_CLOSE);
         }
@@ -153,6 +160,7 @@ public class Calculator extends JFrame implements ActionListener {
                 f.setVisible(true);
             }
         });
+
         MenuItem exit = new MenuItem("Exit");
         exit.addActionListener(new ActionListener() {
             @Override
@@ -253,17 +261,17 @@ public class Calculator extends JFrame implements ActionListener {
             @Override
             public void windowClosing(WindowEvent we) {
                 super.windowClosing(we);
-
-                JOptionPane.showMessageDialog(f, "Cant Exit");
+//                JOptionPane.showMessageDialog(f, "Can't Exit");
             }
 
             @Override
             public void windowIconified(WindowEvent we) {
                 f.setState(JFrame.NORMAL);
-                JOptionPane.showMessageDialog(f, "Can't Minimize");
+//                JOptionPane.showMessageDialog(f, "Can't Minimize");
             }
         };
     }
-
-
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> createAndShowCustomFrame());
+    }
 }
